@@ -1,0 +1,26 @@
+pandas
+gunicorn==20.0.4
+plotly
+xlrd== 1.1.0
+pathlib
+joblib
+pybase64
+regex
+emoji
+numpy
+datetime
+dash
+dash-bootstrap-components
+dash-auth
+dash-cytoscape
+dash-daq
+dash-extensions
+dash-renderer
+dash-table
+werkzeug
+xlsxwriter
+openpyxl
+scikit-learn
+dash_mantine_components==0.12.0
+dash_iconify
+dash_breakpoints
