@@ -104,7 +104,7 @@ data_page1 = dmc.Container(
                                                                     children=[
                                                                         dmc.CardSection(
                                                                             dmc.Image(
-                                                                                src="assets/image/soil.JPG",
+                                                                                src="assets/image/soil.jpg",
                                                                                 height=160,
                                                                             )
                                                                         ),
@@ -129,7 +129,7 @@ data_page1 = dmc.Container(
                                                                     children=[
                                                                         dmc.CardSection(
                                                                             dmc.Image(
-                                                                                src="assets/image/literacy.JPG",
+                                                                                src="assets/image/literacy.jpg",
                                                                                 height=160,
                                                                             )
                                                                         ),
@@ -154,7 +154,7 @@ data_page1 = dmc.Container(
                                                                     children=[
                                                                         dmc.CardSection(
                                                                             dmc.Image(
-                                                                                src="assets/image/hate.JPG",
+                                                                                src="assets/image/hate.jpg",
                                                                                 height=160,
                                                                             )
                                                                         ),
