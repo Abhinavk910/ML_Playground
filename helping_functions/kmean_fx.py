@@ -11,6 +11,7 @@ import plotly.express as px
 import pandas as pd
 from sklearn import preprocessing
 from sklearn.cluster import KMeans
+from sklearn.tree import DecisionTreeClassifier
 
 def create_table(df, textalign='center', minwidth='100px'):
     columns, values = df.columns, df.values
@@ -139,7 +140,17 @@ def create_model(data, value, stander):
     cluster_list = pd.DataFrame(cluster_list, columns=['cluster']).to_dict('records')
     data['cluster_data'] = df.to_dict('records')
     data['cluster_list'] = cluster_list
-    return data
+    
+    dfinal=pd.DataFrame()
+    for clus in value:
+        dd = df.groupby([f'cluster_{clus}']).size().to_frame().reset_index()
+        dd['cluster_group'] = f'cluster_{clus}'
+        dd = dd.rename(columns={f'cluster_{clus}':'cluster', 0:'count'})
+        dfinal = pd.concat([dfinal, dd])
+    val = dfinal[['cluster_group', 'cluster', 'count']]    
+    val = dfinal.pivot(index='cluster', columns='cluster_group', values='count').reset_index()
+    val = create_table(val)
+    return data, val
 
 def blank_fig():
     fig = go.Figure(go.Scatter(x=[], y = []))
@@ -222,4 +233,22 @@ def get3dscatterplot(data, columns, cluster, title):
             margin=dict(t=0, l=0, r=0, b=0, pad=0,autoexpand=True),
             legend=dict(orientation='h', y=1.1),
           )
+    return fig
+
+def getfeature_importance(data, cluster):
+    cols = [i['row'] for i in data['model_selection']] 
+    df = pd.DataFrame(data['cluster_data'])
+    y = df.loc[:, cluster]
+    X = df.loc[:, cols]
+    tree = DecisionTreeClassifier().fit(X, y)
+    importance = pd.DataFrame(tree.feature_importances_, index=X.columns).reset_index()
+    importance = importance.rename(columns={'index':'Feature', 0:'importance'})
+    importance = importance.sort_values('importance')
+    fig = px.bar(importance, y='Feature', x='importance', orientation='h')
+    fig.update_layout(
+        plot_bgcolor="#fff",
+        font=dict(color='#999999'),
+        height=500,
+        margin=dict(t=0, l=0, r=0, b=10, pad=0,autoexpand=True),
+      )
     return fig

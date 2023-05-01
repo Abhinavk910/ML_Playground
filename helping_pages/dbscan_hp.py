@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Apr 23 01:25:20 2023
+Created on Tue Apr 25 21:15:51 2023
 
 @author: abhinav.kumar
 """
@@ -20,10 +20,9 @@ innerheadingsize=20
 #Load Data
 data_page1 = dmc.Container(
             style={'maxWidth':innerContainerWidth},
-            className='container-ml',
             children=[
                 dmc.Accordion(
-                    id="accordion-simple",
+                    id="accordion-simple-ml2",
                     value="choose",
                     variant='saperated',
                     children=[
@@ -36,7 +35,7 @@ data_page1 = dmc.Container(
                                         dmc.Text(
                                             children=[
                                                 dcc.Upload(
-                                                    id='upload-data',
+                                                    id='upload-data-ml2',
                                                     multiple=False,
                                                     style={
                                                         'lineHeight': '30px','borderWidth': '1px','borderStyle': 'dashed',
@@ -59,8 +58,8 @@ data_page1 = dmc.Container(
                                                 dmc.LoadingOverlay(
                                                     dmc.Stack(
                                                         children=[
-                                                            dmc.Text('FOr overlay', id='check1', style={'color':'whitesmoke', 'height':'40px'}),
-                                                            dmc.Alert( title="Success!", color="green", id='alert-check',
+                                                            dmc.Text('FOr overlay', id='check1-ml2', style={'color':'whitesmoke', 'height':'40px'}),
+                                                            dmc.Alert( title="Success!", color="green", id='alert-check-ml2',
                                                                       icon=DashIconify(icon="mdi:success-circle-outline"),
                                                                       duration=60000,hide=True, style={'marginTop':'-40px'}),
                                                             html.Div(
@@ -69,7 +68,7 @@ data_page1 = dmc.Container(
                                                                     highlightOnHover=True,
                                                                     withBorder=True,
                                                                     withColumnBorders=True,
-                                                                    id='table-data',
+                                                                    id='table-data-ml2',
                                                                 ),
                                                                 style={'overflowX':'scroll'}
                                                             )
@@ -117,7 +116,7 @@ data_page1 = dmc.Container(
                                                                         ),
                                                                         dmc.Button('Get Data',mt=10,
                                                                                    leftIcon=DashIconify(icon="fluent:database-plug-connected-20-filled"),
-                                                                                   id='soil-mineral', variant='gradient', size='xs')
+                                                                                   id='soil-mineral-ml2', variant='gradient', size='xs')
                                                                     ]
                                                                 ),
                                                             ]
@@ -142,7 +141,7 @@ data_page1 = dmc.Container(
                                                                         ),
                                                                         dmc.Button('Get Data',mt=10,
                                                                                    leftIcon=DashIconify(icon="fluent:database-plug-connected-20-filled"),
-                                                                                   id='literacy-india', variant='gradient', size='xs')
+                                                                                   id='literacy-india-ml2', variant='gradient', size='xs')
                                                                     ]
                                                                 )
                                                             ]
@@ -167,14 +166,14 @@ data_page1 = dmc.Container(
                                                                         ),
                                                                         dmc.Button('Get Data',mt=10,
                                                                                    leftIcon=DashIconify(icon="fluent:database-plug-connected-20-filled"),
-                                                                                   id='hatecrime-india', variant='gradient', size='xs')
+                                                                                   id='hatecrime-india-ml2', variant='gradient', size='xs')
                                                                     ]
                                                                 )
                                                             ]
                                                         )
                                                     ]
                                                 ),
-                                                dmc.Alert( title="Success!", color="green", id='alert-check2',
+                                                dmc.Alert( title="Success!", color="green", id='alert-check2-ml2',
                                                       icon=DashIconify(icon="mdi:success-circle-outline"),
                                                       duration=60000,hide=True, style={'marginTop':'-40px'}
                                                 ),
@@ -184,7 +183,7 @@ data_page1 = dmc.Container(
                                                         highlightOnHover=True,
                                                         withBorder=True,
                                                         withColumnBorders=True,
-                                                        id='table-data2',
+                                                        id='table-data2-ml2',
                                                     ),
                                                     style={'overflowX':'scroll'}
                                                 )
@@ -219,12 +218,12 @@ data_page2 =dmc.Container(
             style={'maxWidth':innerContainerWidth},
             children=[
                 html.Div(
-                    id="hidden-div",
+                    id="hidden-div-ml2",
                     style={"display": "none"},
                     children="This callback is triggered when the page loads",
                 ),
                 dmc.Accordion(
-                    id="feature-engg-accordion",
+                    id="feature-engg-accordion-ml2",
                     value="missing-value-check",
                     variant='saperated',
                     children=[
@@ -243,7 +242,7 @@ data_page2 =dmc.Container(
                                                     dmc.LoadingOverlay(
                                                         html.Div(
                                                             dmc.Table(
-                                                                id='missing-value-table', 
+                                                                id='missing-value-table-ml2', 
                                                                 children=header+body,
                                                                 striped=True,
                                                                 highlightOnHover=True,
@@ -255,13 +254,13 @@ data_page2 =dmc.Container(
                                                     )
                                                 ),
                                                 html.Div(
-                                                    dmc.Button('Drop Missing Row', id='drop-missing-val',
+                                                    dmc.Button('Drop Missing Row', id='drop-missing-val-ml2',
                                                                leftIcon=DashIconify(icon="clarity:process-on-vm-line"),
                                                                variant='gradient'),
                                                     hidden=True,
-                                                    id='drop-null-btn-div'
+                                                    id='drop-null-btn-div-ml2'
                                                 ),
-                                                dmc.Alert(id='alert-missing-delete', color='green',hide=True,
+                                                dmc.Alert(id='alert-missing-delete-ml2', color='green',hide=True,
                                                           icon=DashIconify(icon='clarity:success-standard-solid'),
                                                           duration=3000)
                                             ]
@@ -294,7 +293,7 @@ data_page2 =dmc.Container(
                                                             order=1,
                                                             children=[
                                                                 dmc.MultiSelect(
-                                                                    id='column-select',
+                                                                    id='column-select-ml2',
                                                                     searchable=True,
                                                                     nothingFound="No options found",
                                                                     clearable=True,
@@ -310,7 +309,7 @@ data_page2 =dmc.Container(
                                                             order=0,
                                                             children=[
                                                                 dmc.MultiSelect(
-                                                                    id='row-select',
+                                                                    id='row-select-ml2',
                                                                     style={'heigth':'100vh'},
                                                                     searchable=True,
                                                                     nothingFound="No options found",
@@ -325,7 +324,7 @@ data_page2 =dmc.Container(
                                                 ),
                                                 html.Div(
                                                     dmc.Table(
-                                                        id='stats_data',
+                                                        id='stats_data-ml2',
                                                         striped=True,
                                                         highlightOnHover=True,
                                                         withBorder=True,
@@ -338,7 +337,7 @@ data_page2 =dmc.Container(
                                                     children=[
                                                         dmc.Text('Correlation Matrix', weight=700, mt=5, size=innerheadingsize),
                                                         dmc.MultiSelect(
-                                                            id='heatmap-columns',
+                                                            id='heatmap-columns-ml2',
                                                             description='Variables',
                                                             searchable=True,
                                                             nothingFound="No options found",
@@ -347,7 +346,7 @@ data_page2 =dmc.Container(
                                                         ),
                                                         dmc.LoadingOverlay(
                                                             dcc.Graph(
-                                                                id='heatmap-fig',
+                                                                id='heatmap-fig-ml2',
                                                             )
                                                         )
                                                         
@@ -358,7 +357,7 @@ data_page2 =dmc.Container(
                                                     children=[
                                                         dmc.Text('Distribution', weight=700, mt=5, size=innerheadingsize),
                                                         dmc.MultiSelect(
-                                                            id='histogram-columns',
+                                                            id='histogram-columns-ml2',
                                                             description='Variables',
                                                             searchable=True,
                                                             nothingFound="No options found",
@@ -367,7 +366,7 @@ data_page2 =dmc.Container(
                                                         ),
                                                         dmc.LoadingOverlay(
                                                             dcc.Graph(
-                                                                id='histogram-fig',
+                                                                id='histogram-fig-ml2',
                                                             )
                                                         )
                                                         
@@ -378,7 +377,7 @@ data_page2 =dmc.Container(
                                                     children=[
                                                         dmc.Text('Density Plot', weight=700, mt=5, size=innerheadingsize),
                                                         dmc.MultiSelect(
-                                                            id='hist2d-columns',
+                                                            id='hist2d-columns-ml2',
                                                             maxSelectedValues=2,
                                                             description='Variables',
                                                             searchable=True,
@@ -389,7 +388,7 @@ data_page2 =dmc.Container(
                                                         ),
                                                         dmc.LoadingOverlay(
                                                             dcc.Graph(
-                                                                id='hist2d-fig',
+                                                                id='hist2d-fig-ml2',
                                                             )
                                                         )
                                                         
@@ -400,7 +399,7 @@ data_page2 =dmc.Container(
                                                     children=[
                                                         dmc.Text('Scatter Matrix', weight=700, mt=5, size=innerheadingsize),
                                                         dmc.MultiSelect(
-                                                            id='scatter-matrix-columns',
+                                                            id='scatter-matrix-columns-ml2',
                                                             description='Variables',
                                                             icon=DashIconify(icon='mdi:variable'),
                                                             searchable=True,
@@ -410,7 +409,7 @@ data_page2 =dmc.Container(
                                                         ),
                                                         dmc.LoadingOverlay(
                                                             dcc.Graph(
-                                                                id='scatter-matrix-fig',
+                                                                id='scatter-matrix-fig-ml2',
                                                             )
                                                         )
                                                         
@@ -435,7 +434,7 @@ data_page2 =dmc.Container(
                                                 dmc.Text('Threshold calculation is Based on IQR'),
                                                 dmc.LoadingOverlay(
                                                     html.Div(
-                                                        dmc.Table(id='outlier-value-table',                                                                striped=True,
+                                                        dmc.Table(id='outlier-value-table-ml2',                                                                striped=True,
                                                                     highlightOnHover=True,
                                                                     withBorder=True,
                                                                     withColumnBorders=True,
@@ -446,20 +445,20 @@ data_page2 =dmc.Container(
                                                 dmc.MultiSelect(
                                                     label="Variables",
                                                     description='Removing Outlier by thresholding values',
-                                                    id='column-tolimit',
+                                                    id='column-tolimit-ml2',
                                                     icon=DashIconify(icon='mdi:variable'),
                                                     searchable=True,
                                                     nothingFound="No options found",
                                                     clearable=True,
                                                     
                                                 ),
-                                                dmc.Button('Limit the Outlier', id='limit-outlier-val',
+                                                dmc.Button('Limit the Outlier', id='limit-outlier-val-ml2',
                                                            leftIcon=DashIconify(icon="clarity:process-on-vm-line"),
                                                            variant='gradient'),
-                                                dmc.Alert(children=['Done'],id='alert-outlier-limit', color='green',
+                                                dmc.Alert(children=['Done'],id='alert-outlier-limit-ml2', color='green',
                                                           icon=DashIconify(icon='clarity:success-standard-solid'),hide=True,
                                                           duration=3000),
-                                                dmc.Alert(children=['Select atleast one!!!'],id='alert-outlier-limit2', color='yellow',
+                                                dmc.Alert(children=['Select atleast one!!!'],id='alert-outlier-limit2-ml2', color='yellow',
                                                           icon=DashIconify(icon='material-symbols:info-outline-rounded'),hide=True,
                                                           duration=3000)
                                             ]
@@ -478,18 +477,18 @@ data_page2 =dmc.Container(
                                             children=[
                                                 dmc.MultiSelect(
                                                     label="Available Variable",
-                                                    id='final-column-selection',
+                                                    id='final-column-selection-ml2',
                                                     description='Selected Variable which will be used in building Model',
                                                     searchable=True,
                                                     icon=DashIconify(icon='mdi:variable'),
                                                     nothingFound="No options found",
                                                     clearable=True,
                                                 ),
-                                                dmc.Button(['Select'], id='final-select',
+                                                dmc.Button(['Select'], id='final-select-ml2',
                                                            leftIcon=DashIconify(icon="iconoir:open-select-hand-gesture"),
                                                            variant='gradient',size='md'),
                                                 dmc.LoadingOverlay(
-                                                dmc.Text(id='final-select-show'))
+                                                dmc.Text(id='final-select-show-ml2'))
                                             ]
                                         )
                                     ]
@@ -508,7 +507,7 @@ data_page3=dmc.Container(
             style={'maxWidth':innerContainerWidth},
             children=[
                 dmc.Accordion(
-                    id="model-accordion",
+                    id="model-accordion-ml2",
                     value="Standerdize",
                     variant='saperated',
                     children=[
@@ -545,47 +544,8 @@ data_page3=dmc.Container(
                                             data=["Standardization", "Normalization"],
                                             searchable=True,
                                             nothingFound="No options found",
-                                            id='standerdize-type',
+                                            id='standerdize-type-ml2',
                                             icon = DashIconify(icon="uil:scaling-right")
-                                        )
-                                    ]
-                                )
-                            ]
-                        ),
-                        dmc.AccordionItem(
-                            value="elbow",
-                            children=[
-                                dmc.AccordionControl("Elbow", icon=DashIconify(icon="game-icons:elbow-pad")),
-                                dmc.AccordionPanel(
-                                    style={'padding':'10px 20px 10px 20px',}, 
-                                    children=[
-                                        dmc.Spoiler(
-                                            showLabel="Show more",
-                                            hideLabel="Hide",
-                                            maxHeight=36,
-                                            children=[
-                                                dmc.Text(
-                                                    size=13,
-                                                    color='dimmed',
-                                                    children=[
-                                                        """The elbow method is a technique used to determine the optimal number of clusters to use in a K-means clustering algorithm. The method involves plotting the within-cluster sum of squared errors (WCSS) for a range of cluster values and identifying the "elbow" in the plot, which represents the point of diminishing returns where the increase in the number of clusters no longer results in a significant reduction in WCSS.
-                                                    """
-                                                    ]
-                                                )
-                                            ],
-                                        ),
-                                        dmc.NumberInput(
-                                            label="Select Cluster",
-                                            description='WCSS will be calculated on these cluster',
-                                            value=10,
-                                            min=1,
-                                            step=1,
-                                            icon=DashIconify(icon='carbon:assembly-cluster'),
-                                            style={'marginBottom':'20px'},
-                                            id='cluster-number-elbow'
-                                        ),
-                                        dmc.LoadingOverlay(
-                                            dcc.Graph(id='elbow-graph', figure=blank_fig(),config={'displayModeBar': False})
                                         )
                                     ]
                                 )
@@ -598,22 +558,53 @@ data_page3=dmc.Container(
                                 dmc.AccordionPanel(
                                     style={'padding':'10px 20px 10px 20px',}, 
                                     children=[
-                                        dmc.MultiSelect(
-                                            style={'marginBottom':'20px'},
-                                            label='Create Model with Cluster',
-                                            description='Can Select more than one',
-                                            icon=DashIconify(icon='carbon:assembly-cluster'),
-                                            data=[str(i) for i in np.arange(2, 20).tolist()],
-                                            id='num-cluster'
+                                        dmc.Grid(
+                                            children=[
+                                                dmc.Col(
+                                                    span=12,
+                                                    sm=6,
+                                                    children=[
+                                                        dmc.NumberInput(
+                                                            label='eps',
+                                                            description='Maximum distance between two samples',
+                                                            value=0.50,
+                                                            min=0.25,
+                                                            step=0.25,
+                                                            max=10,
+                                                            precision=2,
+                                                            icon=DashIconify(icon='carbon:assembly-cluster'),
+                                                            style={'marginBottom':'20px'},
+                                                            id='eps-ml2'
+                                                        ),
+                                                    ]
+                                                ),
+                                                dmc.Col(
+                                                    span=12,
+                                                    sm=6,
+                                                    children=[
+                                                        dmc.NumberInput(
+                                                            label='min_samples',
+                                                            description="Minimum samples for core points",
+                                                            value=5,
+                                                            min=2,
+                                                            step=1,
+                                                            max=10,
+                                                            icon=DashIconify(icon='carbon:assembly-cluster'),
+                                                            style={'marginBottom':'20px'},
+                                                            id='min-samples-ml2'
+                                                        ),
+                                                    ]
+                                                )
+                                            ]
                                         ),
-                                        dmc.Button('Compute', id='compute-model',
+                                        dmc.Button('Compute', id='compute-model-ml2',
                                                    leftIcon=DashIconify(icon="clarity:process-on-vm-line"),
                                                    variant='gradient', style={'margin':'10px', 'width':'100%'}),
-                                        dmc.LoadingOverlay(dmc.Text(children=["Model Haven't Built yet"],style={'margin':'10px'},id='compute-model-overlay', size=23)),
+                                        dmc.LoadingOverlay(dmc.Text(children=["Model Haven't Built yet"],style={'margin':'10px'},id='compute-model-overlay-ml2', size=23)),
                                         dmc.Alert(
                                             "Model Building Process completed. Click Next for Cluster Analysis",
                                             title="Done",
-                                            id="model-done",
+                                            id="model-done-ml2",
                                             color="success",
                                             duration=3000,
                                             hide=True
@@ -621,18 +612,19 @@ data_page3=dmc.Container(
                                         dmc.Alert(
                                             "You have to select atleast one cluster",
                                             title="Error",
-                                            id="model-error",
+                                            id="model-error-ml2",
                                             color="red",
                                             duration=3000,
                                             hide=True
                                         ),
                                         dmc.Table(
-                                            id='cluster-table',
+                                            id='cluster-table-ml2',
                                             striped=True,
                                             highlightOnHover=True,
                                             withBorder=True,
                                             withColumnBorders=True
                                         ),
+                                        dmc.Text(align='right', children=['* -1 means they are outliers'], size=10, color='grey')
                                     ]
                                 )
                             ]
@@ -653,20 +645,12 @@ data_page3=dmc.Container(
                                             """The decision tree can then be used to estimate the importance of each input feature in determining the cluster assignments. """
                                             ]
                                         ),
-                                        dmc.Select(
-                                            style={'marginTop':'20px'},
-                                            description='Select Cluster',
-                                            searchable=True,
-                                            nothingFound="No options found",
-                                            id='feature-importance-clusters',
-                                            icon = DashIconify(icon="uil:scaling-right")
-                                        ),
-                                        dmc.Button('Compute importance', id='compute-model-importance',
+                                        dmc.Button('Compute importance', id='compute-model-importance-ml2',
                                                    leftIcon=DashIconify(icon="clarity:process-on-vm-line"),
                                                    variant='gradient', style={'margin':'10px', 'width':'100%'}),
                                         dmc.LoadingOverlay(
                                             dcc.Graph(
-                                                id='feature-importance-fig', figure=blank_fig(), config={'displayModeBar': False}
+                                                id='feature-importance-fig-ml2', figure=blank_fig()
                                             )
                                         )
                                     ]
@@ -684,7 +668,7 @@ data_page4= dmc.Container(
             style={'maxWidth':innerContainerWidth},
             children=[
                 dmc.Accordion(
-                    id="cluster-accordion",
+                    id="cluster-accordion-ml2",
                     value="clusterP2",
                     variant='saperated',
                     children=[
@@ -713,7 +697,7 @@ data_page4= dmc.Container(
                                                             order=0,
                                                             children=[
                                                                 dmc.Select(
-                                                                    id='cluster-select',
+                                                                    id='cluster-select-ml2',
                                                                     icon=DashIconify(icon='carbon:assembly-cluster'),
                                                                     description='Cluster',
                                                                 )
@@ -726,7 +710,7 @@ data_page4= dmc.Container(
                                                             order=1,
                                                             children=[
                                                                 dmc.MultiSelect(
-                                                                    id='var-select',
+                                                                    id='var-select-ml2',
                                                                     icon=DashIconify(icon='mdi:variable'),
                                                                     description='Variables',
                                                                     searchable=True,
@@ -742,7 +726,7 @@ data_page4= dmc.Container(
                                                             order=2,
                                                             children=[
                                                                 dmc.Select(
-                                                                    id='stats-select',
+                                                                    id='stats-select-ml2',
                                                                     data=['Mean', 'Median', 'Mode', 'MIN', 'MAX'],
                                                                     icon=DashIconify(icon='ion:stats-chart-outline'),
                                                                     description='Stats',
@@ -760,7 +744,7 @@ data_page4= dmc.Container(
                                                             highlightOnHover=True,
                                                             withBorder=True,
                                                             withColumnBorders=True,
-                                                            id='cluster_stats_data'
+                                                            id='cluster_stats_data-ml2'
                                                         ),
                                                         style={'overflowX':'scroll', 'minWidth':'300px'}
                                                     )
@@ -783,7 +767,7 @@ data_page4= dmc.Container(
                                                                     order=1,
                                                                     children=[
                                                                         dmc.Select(
-                                                                            id='cluster-boxplot-select',
+                                                                            id='cluster-boxplot-select-ml2',
                                                                             icon=DashIconify(icon='carbon:assembly-cluster'),
                                                                             description='Cluster',
                                                                         ),
@@ -796,7 +780,7 @@ data_page4= dmc.Container(
                                                                     order=0,
                                                                     children=[
                                                                         dmc.Select(
-                                                                            id='cluster-boxplot-columns',
+                                                                            id='cluster-boxplot-columns-ml2',
                                                                             icon=DashIconify(icon='mdi:variable'),
                                                                             description='Variable',
                                                                         ),
@@ -806,7 +790,7 @@ data_page4= dmc.Container(
                                                         ),
                                                         dmc.LoadingOverlay(
                                                             dcc.Graph(
-                                                                id='cluster-boxplot-fig',figure=blank_fig()
+                                                                id='cluster-boxplot-fig-ml2',figure=blank_fig()
                                                             )
                                                         )
 
@@ -830,7 +814,7 @@ data_page4= dmc.Container(
                                                                     order=1,
                                                                     children=[
                                                                         dmc.Select(
-                                                                            id='cluster-scatter-select',
+                                                                            id='cluster-scatter-select-ml2',
                                                                             icon=DashIconify(icon='carbon:assembly-cluster'),
                                                                             description='Cluster',
                                                                         ),
@@ -843,7 +827,7 @@ data_page4= dmc.Container(
                                                                     order=0,
                                                                     children=[
                                                                         dmc.MultiSelect(
-                                                                            id='cluster-scatter-columns',
+                                                                            id='cluster-scatter-columns-ml2',
                                                                             icon=DashIconify(icon='mdi:variable'),
                                                                             description='Variable',
                                                                             searchable=True,
@@ -856,7 +840,7 @@ data_page4= dmc.Container(
                                                         ),
                                                         dmc.LoadingOverlay(
                                                             dcc.Graph(
-                                                                id='cluster-scatter-fig', figure=blank_fig()
+                                                                id='cluster-scatter-fig-ml2', figure=blank_fig()
                                                             )
                                                         )
 
@@ -880,7 +864,7 @@ data_page4= dmc.Container(
                                                                     order=1,
                                                                     children=[
                                                                         dmc.Select(
-                                                                            id='cluster-3dscatter-select',
+                                                                            id='cluster-3dscatter-select-ml2',
                                                                             icon=DashIconify(icon='carbon:assembly-cluster'),
                                                                             description='Cluster',
                                                                         ),
@@ -893,7 +877,7 @@ data_page4= dmc.Container(
                                                                     order=0,
                                                                     children=[
                                                                         dmc.MultiSelect(
-                                                                            id='cluster-3dscatter-columns',
+                                                                            id='cluster-3dscatter-columns-ml2',
                                                                             icon=DashIconify(icon='mdi:variable'),
                                                                             description='Variable',
                                                                             maxSelectedValues=3
@@ -904,7 +888,7 @@ data_page4= dmc.Container(
                                                         ),
                                                         dmc.LoadingOverlay(
                                                             dcc.Graph(
-                                                                id='cluster-3dscatter-fig', figure=blank_fig()
+                                                                id='cluster-3dscatter-fig-ml2', figure=blank_fig()
                                                             )
                                                         )
 
@@ -940,7 +924,7 @@ data_page4= dmc.Container(
                                                             order=1,
                                                             children=[
                                                                 dmc.Select(
-                                                                    id='cluster-pca-select',
+                                                                    id='cluster-pca-select-ml2',
                                                                     icon=DashIconify(icon='carbon:assembly-cluster'),
                                                                     description='Cluster',
                                                                 ),
@@ -953,7 +937,7 @@ data_page4= dmc.Container(
                                                             order=0,
                                                             children=[
                                                                 dmc.MultiSelect(
-                                                                    id='cluster-pca-columns',
+                                                                    id='cluster-pca-columns-ml2',
                                                                     icon=DashIconify(icon='mdi:variable'),
                                                                     description='Variable',
                                                                     searchable=True,
@@ -964,12 +948,12 @@ data_page4= dmc.Container(
                                                         )
                                                     ]
                                                 ),
-                                                dmc.Button('Compute', id='pca2d-compute',
+                                                dmc.Button('Compute', id='pca2d-compute-ml2',
                                                            leftIcon=DashIconify(icon="clarity:process-on-vm-line"),
                                                            variant='gradient', style={'marginBottom':'5px'}),
                                                 dmc.LoadingOverlay(
                                                     dcc.Graph(
-                                                        id='cluster-pca-fig',figure=blank_fig()
+                                                        id='cluster-pca-fig-ml2',figure=blank_fig()
                                                     )
                                                 )
                                             ]
@@ -978,12 +962,12 @@ data_page4= dmc.Container(
                                         dmc.Stack(
                                             children=[
                                                 dmc.Text('PCA Decomposing 3D', weight=700, mt=5, size=innerheadingsize),
-                                                dmc.Button('Compute 3D', id='pca3d-compute',
+                                                dmc.Button('Compute 3D', id='pca3d-compute-ml2',
                                                            leftIcon=DashIconify(icon="clarity:process-on-vm-line"),
                                                            variant='gradient', style={'marginBottom':'5px'}),
                                                 dmc.LoadingOverlay(
                                                     dcc.Graph(
-                                                        id='cluster-pca3d-fig', figure=blank_fig()
+                                                        id='cluster-pca3d-fig-ml2', figure=blank_fig()
                                                     )
                                                 )
                                             ]

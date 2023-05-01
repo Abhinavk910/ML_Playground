@@ -5,7 +5,7 @@ Created on Sat Apr 22 23:28:04 2023
 @author: abhinav.kumar
 """
 
-from dash import Dash, html, Output, Input, State
+from dash import Dash, html, Output, Input, State, dcc
 import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
 import dash
@@ -32,6 +32,7 @@ app.layout = dmc.MantineProvider(
             'fontFamily': '"Inter", sans-serif',
             },
         children=[
+            dcc.Location(id='url', refresh=False),
             dmc.Container([
                 dmc.Navbar(
                     py="md",
@@ -56,7 +57,18 @@ app.layout = dmc.MantineProvider(
                                     children=[
                                         dmc.NavLink(label="KMean",
                                                     href='/kmean',
-                                                    icon=get_icon(icon='carbon:edge-cluster')),
+                                                    id='kmean-navbar',
+                                                    icon=get_icon(icon='carbon:edge-cluster')
+                                        ),
+                                        dmc.NavLink(label="DBScan",
+                                                    href='/dbscan',
+                                                    id='dbscan-navbar', 
+                                                    icon=get_icon(icon='carbon:edge-cluster')
+                                        ),
+                                        dmc.NavLink(label="Hierarchical",
+                                                    href='/hierarchical',
+                                                    icon=get_icon(icon='carbon:edge-cluster')
+                                        ),
                                     ],
                                 ),
                                                     ],
@@ -81,7 +93,18 @@ app.layout = dmc.MantineProvider(
                                         children=[
                                             dmc.NavLink(label="KMean",
                                                         href='/kmean',
-                                                        icon=get_icon(icon='carbon:edge-cluster')),
+                                                        id='kmean-drawer',
+                                                        icon=get_icon(icon='carbon:edge-cluster')
+                                            ),
+                                            dmc.NavLink(label="DBScan",
+                                                        href='/dbscan',
+                                                        id='dbscan-drawer',
+                                                        icon=get_icon(icon='carbon:edge-cluster')
+                                            ),
+                                            dmc.NavLink(label="Hierarchical",
+                                                        href='/hierarchical',
+                                                        icon=get_icon(icon='carbon:edge-cluster')
+                                            ),
                                         ],
                                     ),
                                 ],
@@ -102,7 +125,8 @@ app.layout = dmc.MantineProvider(
                                 dmc.Group(
                                     position='apart',
                                     children=[
-                                        html.Div(
+                                        dmc.Group(
+                                            spacing='xs',
                                             children=[
                                                 dmc.MediaQuery([
                                                     dmc.ActionIcon(
@@ -120,15 +144,22 @@ app.layout = dmc.MantineProvider(
                                                         id='drawer-demo-button2'
                                                     ),
                                                     ], largerThan="md", styles={'display': 'none'}),
+                                                dmc.MediaQuery([
+                                                    dmc.Text(children=[""], id='ml-page', weight=700, variant="gradient",
+                                                             gradient={"from": "#a8dadc", "to": "#457b9d", "deg": 45},
+                                                             )
+                                                    ], smallerThan='xs', styles={'fontSize':12} )
                                             ]
                                         ),
                                         html.Div(
                                             dmc.Group(
                                                 children=[
+                                                    dmc.MediaQuery([
                                                       dmc.Text(['Created By ',
                                                                 dmc.Anchor("Abhinav Kumar",href="http://www.linkedin.com/in/abhinavk910",
-                                                                        target="_blank", style={'text-decoration': 'none', 'color':'#457b9d'})
-                                                      ], align='center', color="#a8dadc", weight=700),  
+                                                                        target="_blank", style={'textDecoration': 'none', 'color':'#457b9d'})
+                                                      ], align='center', color="#a8dadc", weight=700)
+                                                    ], smallerThan='xs', styles={'fontSize':12}),  
                                                     html.A(
                                                         dmc.Avatar(src='assets/head.jpg',
                                                             size="xs",radius="lg"),
@@ -154,6 +185,7 @@ app.layout = dmc.MantineProvider(
                                 )
                             ]
                         ),
+                        
                         dash.page_container
                     ],
                 )
@@ -186,6 +218,7 @@ dash.clientside_callback(
     """
     function handle_click_sidebar_width(n_clicks, width){
       const current_width = parseInt(width.base)
+      console.log(current_width)
       if (n_clicks > 0 & current_width == 300) {
        return {base: 55};
       } else {
@@ -196,6 +229,27 @@ dash.clientside_callback(
     Output("sidebar2", "width"),
     Input("sidebar-button2", "n_clicks"),
     State('sidebar2','width')
+)
+
+          
+dash.clientside_callback(
+    """
+
+    function handle_heading_text(url){
+      console.log(url)
+      if (url === '/kmean') {
+        return "KMean";
+      } else if (url === '/dbscan') {
+        return "DBScan";
+      } else if (url === '/hierarchical') {
+        return 'Hierarchical'    
+      } else {
+        return ""
+     }
+    }
+    """,
+    Output("ml-page", "children"),
+    Input("url", "pathname")
 )
 
 if __name__ == '__main__':
